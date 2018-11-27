@@ -26,15 +26,9 @@ public class Conta {
 		obs = modObs;
 		this.ativa=ativa;
 		
-		ArrayList<Movimentacao> mov = BDD.entradasEDespesas(idTipo);
-		System.out.println(mov.get(0).getId());
-		
-		if(!mov.isEmpty())
-			entradasDespesas.addAll(mov);
-		
-		mov = BDD.ang_Exe(id);
-		if(!mov.isEmpty())
-			entradasDespesas.addAll(mov);
+		entradasDespesas = new ArrayList<>();
+		entradasDespesas.addAll(BDD.entradasEDespesas(idTipo));
+		entradasDespesas.addAll(BDD.entradasEDespesas(idTipo));
 	}
 	public Conta(int modIdLogin,int modIdTipo,float modSaldo,String modObs,boolean ativa){//Ao Criar conta no Programa
 		id =0;

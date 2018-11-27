@@ -440,7 +440,7 @@ public class BDD {
 			}
 		}
 	}
-	public static void updateAng_ex(Movimentacao mov,int idconta){/*********************************************/
+	public static void updateAng_ex(Movimentacao mov,int idconta){/*********************************/
 		PreparedStatement statement = null;
 		
 		if(conecta()){
@@ -470,7 +470,7 @@ public class BDD {
 			}
 		}
 	}
-	public static void insertAng_ex(Movimentacao mov,int idconta){
+	public static void insertAng_ex(Movimentacao mov,int idconta){/*********************************/
 		PreparedStatement statement = null;
 		
 		if(conecta()){

@@ -1,0 +1,44 @@
+package ClassesAuxiliares;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+
+public class Grafico extends JFrame {
+	public Grafico(String titulo) {
+	      super( titulo ); //Define o titulo da tela
+	      
+	      setSize(200, 200);
+	      setLayout(null);
+	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      setVisible(true);
+	      
+	    //Cria um dataSet para inserir os dados que serão passados para a criação do gráfico tipo Pie
+	      DefaultPieDataset pieDataset = new DefaultPieDataset();
+	       
+	      //Adiciona os dados ao dataSet deve somar um total de 100%
+	      pieDataset.setValue("A", new Integer(50));
+	      //pieDataset.setValue("B", new Integer(10));
+	      //pieDataset.setValue("C", new Integer(10));
+	      pieDataset.setValue("D", new Integer(50));
+	       
+	      //Cria um objeto JFreeChart passando os seguintes parametros
+	      JFreeChart grafico = ChartFactory.createPieChart(
+	      null,//"Titulo Do Grafico", //Titulo do grafico
+	      pieDataset, //DataSet
+	      false, //Para mostrar ou não a legenda
+	      true, //Para mostrar ou não os tooltips
+	      false);
+	      
+	      ChartPanel oi =new ChartPanel( grafico );
+	      
+	       oi.setSize(200, 200);
+	      this.add(oi);
+	      
+	      //add grafico
+	      //this.pack(); //para ajustar automaticamente o Frame
+	   }
+	   public static void main(String[] args) {
+	      new PrimeiroGrafico().setVisible( true );
+	   }
+}

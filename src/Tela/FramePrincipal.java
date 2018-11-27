@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
+import backEnd.Usuario;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +21,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		private static Dimension dimensao; 
 		private static int mes= ManipulandoData.pegaMes(),ano=ManipulandoData.pegaAno();
 		private static FramePrincipal idFrame;
+		private static Usuario idUsuario;
 	
 	/*********************Atributos************************/
 		private JButton botaoHome;
@@ -32,7 +34,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		private JLabel rodapeLabel;
 	
 	/*********************Configurações Gerais************************/
-	public FramePrincipal(int tot){
+	public FramePrincipal(int tot,Usuario idUsuario){
 		super("Gerenciador Financeiro");
 		getContentPane().setBackground(FramePrincipal.colorbackground);
 		setLayout(null);
@@ -52,8 +54,11 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		criandoPartesVisuais();
 		criandoRodape();
 		
-		idFrame= this;
 		tempoLogado();
+		
+		//Atribuindo atributos
+		idFrame= this;
+		this.idUsuario=idUsuario;
 		
 	/*****************************Configuração do Panel**********************************/
 		trocaPanel(new PanelHome(porWidth(93.5), porHeight(84)));
@@ -278,5 +283,14 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 	}
 	public static FramePrincipal getIdFrame() {
 		return idFrame;
+	}
+	public static Usuario getIdUsuario() {
+		return idUsuario;
+	}
+	public static void setIdUsuario(Usuario idUsuario) {
+		FramePrincipal.idUsuario = idUsuario;
+	}
+	public static void setIdFrame(FramePrincipal idFrame) {
+		FramePrincipal.idFrame = idFrame;
 	}
 }

@@ -1,4 +1,4 @@
-package Tela;
+package frame_Principal;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -16,8 +16,9 @@ import javax.swing.text.rtf.RTFEditorKit;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
+import frames.FrameMovimentacao;
 import panelAuxiares.PanelContas;
-import panelAuxiares.PanelSaldo;
+import panelAuxiares.PanelValores;
 
 public class PanelHome extends JPanel implements JanelaRedimensionada,ActionListener{
 	/******************************Atributos********************************/
@@ -49,6 +50,15 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			botaoReceita.setBackground(Color.GREEN);
 			botaoReceita.setBounds(porWidth(20), porHeight(5), porWidth(10), porHeight(5));
 			botaoReceita.setBorder(new LineBorder(null,0,true));
+			
+			botaoReceita.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new FrameMovimentacao();
+					
+				}
+			});
 
 		/****************************Configurações Botao Receita***************************/
 			botaoDespesa = new JButton("Despesa");
@@ -113,10 +123,10 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			labelMes.setBounds(porWidth(45), porHeight(94), porWidth(15), porHeight(5));
 			
 		/********************************Panel Saldo*********************************************/
-			panelSaldo = new PanelSaldo(porWidth(10), porHeight(5), 100);
+			panelSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo");
 			add(panelSaldo);
 			panelSaldo.setVisible(true);
-			panelSaldo.setBounds(porWidth(85), porHeight(80), porWidth(10), porHeight(5));
+			panelSaldo.setBounds(porWidth(85), porHeight(78), porWidth(10), porHeight(7));
 				
 		
 			

@@ -1,4 +1,4 @@
-package Tela;
+package frame_Principal;
 
 import java.awt.Color;
 

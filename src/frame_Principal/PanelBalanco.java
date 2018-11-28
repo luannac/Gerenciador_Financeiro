@@ -1,4 +1,4 @@
-package Tela;
+package frame_Principal;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +13,7 @@ import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
 import backEnd.Contas.Movimentacao;
 import panelAuxiares.PanelContas;
+import panelAuxiares.PanelValores;
 
 public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionListener{
 	/******************************Atributos********************************/
@@ -21,6 +22,7 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 	private JLabel labelMes;
 	
 	private JScrollPane jsMovimentacoes;
+	private JPanel pSaldo,pReceita,pDespesas;
 
 /******************************Construtor********************************/
 	public PanelBalanco(int x, int y){
@@ -109,12 +111,32 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		
 	}
 	private void criandosPanels(){
-		/******************************Configuração do ScrollPane Contas**********************/
+	/******************************Configuração do ScrollPane Contas**************************/
 		jsMovimentacoes = new JScrollPane();
 		add(jsMovimentacoes);
 		jsMovimentacoes.setBounds(porWidth(5), porHeight(25), porWidth(90), porHeight(65));
 		//pContas.setBorder(null);
 		jsMovimentacoes.setVisible(true);
+		
+	/****************************Configurações Panel Saldo************************************/
+		pSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo");
+		add(pSaldo);
+		pSaldo.setBounds(porWidth(5), porHeight(19), porHeight(10), porHeight(7));
+		pSaldo.setVisible(true);
+		
+	/****************************Configurações Panel Receita************************************/
+		pReceita = new PanelValores(porWidth(10), porHeight(7), 100, "Receita do Més");
+		add(pReceita);
+		pReceita.setVisible(true);
+		pReceita.setBounds(porWidth(16), porHeight(19), porWidth(10), porHeight(7));
+		pReceita.setVisible(true);
+	
+	/****************************Configurações Panel Receita************************************/
+		pDespesas = new PanelValores(porWidth(10), porHeight(7), 100, "Despesas do Més");
+		add(pDespesas);
+		pDespesas.setVisible(true);
+		pDespesas.setBounds(porWidth(24), porHeight(19), porWidth(10), porHeight(7));
+		
 	}
 
 	

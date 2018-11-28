@@ -4,36 +4,44 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ClassesAuxiliares.JanelaRedimensionada;
-import Tela.FramePrincipal;
+import frame_Principal.FramePrincipal;
 
-public class PanelSaldo extends JPanel implements JanelaRedimensionada{
+public class PanelValores extends JPanel implements JanelaRedimensionada{
 /**********************************Atributos************************************************************/
-	private JLabel lSaldo;
+	private JLabel lValor,lLabel;
 	
 /**********************************Construtor***********************************************************/
-	public PanelSaldo(int x, int y,float saldo) {
+	public PanelValores(int x, int y,float valor,String nome) {
 		setLayout(null);
 		setBackground(FramePrincipal.getAuxBackground());
 		setSize(x,y);
 		setBackground(Color.green);
-		setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Saldo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 15), Color.BLACK));
+		setBorder(javax.swing.BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK)));
 		
-		criandoPanels();
-		lSaldo.setText("R$"+saldo);
+		criandoLabels();
+		lLabel.setText(nome+": ");
+		lValor.setText("R$"+valor);
+		
 	}
 	
 /*********************************Metodos Auxiliares****************************************************/
-	private void criandoPanels(){	
+	private void criandoLabels(){	
 		//Configuração lSaldo
-		lSaldo = new JLabel();
-		add(lSaldo);
-		lSaldo.setVisible(true);
-		lSaldo.setBounds(porWidth(10), porHeight(10), porWidth(80), porHeight(99));
+		lValor = new JLabel();
+		add(lValor);
+		lValor.setVisible(true);
+		lValor.setBounds(porWidth(10), porHeight(45), porWidth(89), porHeight(50));
 		
+		//Configurando lLabel
+		lLabel = new JLabel();
+		add(lLabel);
+		lLabel.setVisible(true);
+		lLabel.setBounds(porWidth(10), porHeight(10), porWidth(60), porHeight(30));
 	}
 	
 /**********************************Metodos da JanelaRedimencionada**************************************/

@@ -1,4 +1,4 @@
-package Tela;
+package frames;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import backEnd.BDD;
 import backEnd.Usuario;
+import frame_Principal.FramePrincipal;
 
 public class FrameLogin extends JFrame {
 	/**********************Atributos*************************/

@@ -20,9 +20,21 @@ public class Usuario {
 		
 	/***********************************Construtor*******************************************/
 		public Usuario(){
-			contas = BDD.carregaContas();
-			agendadas = BDD.carregaAgendadas();
-			tipos = BDD.carregandoTipos();
+			try{
+				contas = BDD.carregaContas();
+			}catch(Exception e){
+				contas = new ArrayList<>();
+			}
+			try{
+				agendadas = BDD.carregaAgendadas();
+			}catch(Exception e){
+				agendadas = new ArrayList<>();
+			}
+			try{
+				tipos = BDD.carregandoTipos();				
+			}catch(Exception e){
+				tipos = new ArrayList<>();
+			}
 		}
 		
 	/***********************************Metodos*******************************************/

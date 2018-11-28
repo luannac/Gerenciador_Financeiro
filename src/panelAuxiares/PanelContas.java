@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import ClassesAuxiliares.JanelaRedimensionada;
-import Tela.FramePrincipal;
 import backEnd.Contas.Conta;
+import frame_Principal.FramePrincipal;
 
 public class PanelContas extends JPanel implements JanelaRedimensionada{
 	/************************************Atributos*******************************************/
@@ -19,7 +19,8 @@ public class PanelContas extends JPanel implements JanelaRedimensionada{
 	/************************************Construtor*******************************************/
 		public PanelContas(int x, int y){
 			contas= new ArrayList<>();
-			contas.addAll(FramePrincipal.getIdUsuario().getContas());
+			if(!FramePrincipal.getIdUsuario().getContas().isEmpty())
+				contas.addAll(FramePrincipal.getIdUsuario().getContas());
 			
 			setLayout(null);
 			setBackground(FramePrincipal.getAuxBackground());

@@ -1,4 +1,4 @@
-package Tela;
+package frame_Principal;
 
 import javax.swing.*;
 
@@ -6,6 +6,7 @@ import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
 import backEnd.BDD;
 import backEnd.Usuario;
+import frames.FrameLogin;
 import panelAuxiares.PanelContas;
 
 import java.awt.Color;

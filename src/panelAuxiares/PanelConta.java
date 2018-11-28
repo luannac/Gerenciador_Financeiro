@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ClassesAuxiliares.JanelaRedimensionada;
-import Tela.FramePrincipal;
 import backEnd.BDD;
 import backEnd.Contas.Conta;
+import frame_Principal.FramePrincipal;
 
 public class PanelConta extends JPanel implements JanelaRedimensionada {
 	/************************************Atributos*******************************************/

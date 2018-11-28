@@ -1,10 +1,10 @@
 package Testes;
 
 import ClassesAuxiliares.ManipulandoData;
-import Tela.FramePrincipal;
 import backEnd.BDD;
 import backEnd.Usuario;
 import backEnd.Contas.Movimentacao;
+import frame_Principal.FramePrincipal;
 
 public class TestaBack {
 

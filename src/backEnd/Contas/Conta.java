@@ -27,8 +27,8 @@ public class Conta {
 		this.ativa=ativa;
 		
 		entradasDespesas = new ArrayList<>();
-		entradasDespesas.addAll(BDD.entradasEDespesas(idTipo));
-		entradasDespesas.addAll(BDD.entradasEDespesas(idTipo));
+		entradasDespesas.addAll(BDD.entradasEDespesas(id));
+		entradasDespesas.addAll(BDD.ang_Exe(id));
 	}
 	public Conta(int modIdLogin,int modIdTipo,float modSaldo,String modObs,boolean ativa){//Ao Criar conta no Programa
 		id =0;

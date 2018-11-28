@@ -55,7 +55,7 @@ public class Usuario {
 			}
 			return estado;
 		}
-		public boolean execuçãoAgendada(Conta conta,Agendadas age){/**********************/
+		public boolean execucaooAgendada(Conta conta,Agendadas age){/**********************/
 			boolean estado =false;
 			if(!age.isDespesa()){
 				if(conta.recebe(age.getValor())){
@@ -86,8 +86,8 @@ public class Usuario {
 	/***********************************Salvar*******************************************/
 		public boolean salvar(){
 			boolean estado=false;
-			salvarContas();
-			salvarAgendadas();
+			if(salvarContas() && salvarAgendadas())
+				estado=true;
 			return estado;
 		}
 		private boolean salvarContas(){
@@ -96,9 +96,11 @@ public class Usuario {
 				if(conta.getId()==0){
 					BDD.insertConta(conta);
 					salvarMovimentcao(conta);
+					estado=true;
 				}else{
 					BDD.updateConta(conta);
 					salvarMovimentcao(conta);
+					estado=true;
 				}
 			}
 			
@@ -109,29 +111,29 @@ public class Usuario {
 			for (Agendadas agendadas : this.agendadas) {
 				if(agendadas.getId()==0){
 					BDD.insertAgendada(agendadas);
+					estado=true;
 				}else
 					BDD.updateAgendada(agendadas);
+					estado=true;
 			}
 			return estado;
 		}
 		private boolean salvarMovimentcao(Conta conta){
 			boolean estado=false;
 			int idconta= conta.getId();
-			ArrayList<Movimentacao> mov = conta.getEntradasDespesas();
 			
-			for (Movimentacao movimentacao : mov) {
-				if(movimentacao.getTipo()!=null){
-					if(movimentacao.getTipo().getId()==0){
-						BDD.insertEntrada_Despesa(movimentacao, idconta);
-						estado=true;
-					}
-					else{
+			for (Movimentacao movimentacao : conta.getEntradasDespesas()) {
+				if(!movimentacao.isAgendada()){
+					if(movimentacao.getId()==0){
 						BDD.updateEntrada_Despesa(movimentacao, idconta);
 						estado=true;
 					}
-				}
-				if(movimentacao.getAgen()!=null){
-					if(movimentacao.getAgen().getId()==0){
+					else{
+						BDD.insertEntrada_Despesa(movimentacao, idconta);
+						estado=true;
+					}
+				}else{
+					if(movimentacao.getId()==0){
 						BDD.insertAng_ex(movimentacao, idconta);
 						estado=true;
 					}

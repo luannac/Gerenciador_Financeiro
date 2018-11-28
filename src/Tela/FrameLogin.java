@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import backEnd.BDD;
+import backEnd.Usuario;
 
 public class FrameLogin extends JFrame {
 	/**********************Atributos*************************/
@@ -64,8 +65,9 @@ public class FrameLogin extends JFrame {
 			botao[0].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if(true){
-						new FramePrincipal(1);
+					if(BDD.login(field.getText(), password.getText())){
+						Usuario usu =new Usuario();
+						new FramePrincipal(BDD.getTotem(),usu);
 						setVisible(false);
 					}else{
 						label[2].setVisible(true);

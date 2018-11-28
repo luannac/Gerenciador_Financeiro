@@ -11,12 +11,16 @@ import javax.swing.border.LineBorder;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
+import backEnd.Contas.Movimentacao;
+import panelAuxiares.PanelContas;
 
 public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionListener{
 	/******************************Atributos********************************/
 	private JButton botaoReceita,botaoDespesa,botaoTransferencia,botaoNewConta;
 	private JButton botaoSetaEsq,botaoSetaDir,botaoMesAtual;
 	private JLabel labelMes;
+	
+	private JScrollPane jsMovimentacoes;
 
 /******************************Construtor********************************/
 	public PanelBalanco(int x, int y){
@@ -28,7 +32,7 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		
 		criandoBotoes();
 		criandoPartesVisuais();
-
+		criandosPanels();
 	}
 
 /************************************Criando e Configurando Botoes*************************/
@@ -104,6 +108,15 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		labelMes.setBounds(porWidth(45), porHeight(94), porWidth(15), porHeight(5));
 		
 	}
+	private void criandosPanels(){
+		/******************************Configuração do ScrollPane Contas**********************/
+		jsMovimentacoes = new JScrollPane();
+		add(jsMovimentacoes);
+		jsMovimentacoes.setBounds(porWidth(5), porHeight(25), porWidth(90), porHeight(65));
+		//pContas.setBorder(null);
+		jsMovimentacoes.setVisible(true);
+	}
+
 	
 /**********************************Metodos da ActionListener**************************************/
 	@Override

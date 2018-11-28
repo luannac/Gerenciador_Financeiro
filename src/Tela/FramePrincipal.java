@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
+import backEnd.BDD;
 import backEnd.Usuario;
+import panelAuxiares.PanelContas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -49,16 +51,16 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		setDimensao(pegarResolucao());
 		setSize((dimensao.width -230), (dimensao.height - 60));
 		
+		//Atribuindo atributos
+		idFrame= this;
+		this.idUsuario=idUsuario;
+		
 		//Criando Componentes
 		criandoBotoes();
 		criandoPartesVisuais();
 		criandoRodape();
 		
 		tempoLogado();
-		
-		//Atribuindo atributos
-		idFrame= this;
-		this.idUsuario=idUsuario;
 		
 	/*****************************Configuração do Panel**********************************/
 		trocaPanel(new PanelHome(porWidth(93.5), porHeight(84)));
@@ -139,7 +141,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 	private void criandoPartesVisuais(){
 
 		/*****************************Configuração do Status*********************************/
-		statusNome = new JLabel("Usuário: Luann");
+		statusNome = new JLabel("Usuário: "+BDD.getNome());
 		getContentPane().add(statusNome);
 		statusNome.setVisible(true);
 		statusNome.setBounds(porWidth(76),porHeight(2.5),porWidth(10),porHeight(2.6));
@@ -148,6 +150,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		getContentPane().add(statusTime);
 		statusTime.setVisible(true);
 		statusTime.setBounds(porWidth(76),porHeight(5),porWidth(12.6),porHeight(2.6));
+		
 	}
 	
 	private void criandoRodape(){

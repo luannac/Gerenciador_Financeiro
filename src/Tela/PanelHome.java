@@ -16,6 +16,7 @@ import javax.swing.text.rtf.RTFEditorKit;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
+import panelAuxiares.PanelContas;
 import panelAuxiares.PanelSaldo;
 
 public class PanelHome extends JPanel implements JanelaRedimensionada,ActionListener{
@@ -24,7 +25,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 		private JButton botaoSetaEsq,botaoSetaDir,botaoMesAtual;
 		private JLabel labelMes;
 		private JPanel panelSaldo;
-		private JScrollPane contas;
+		private JScrollPane pContas;
 	
 	/******************************Construtor********************************/
 		public PanelHome(int x, int y){
@@ -36,7 +37,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			
 			criandoBotoes();
 			criandoPartesVisuais();
-	
+			criandosPanels();
 		}
 	
 	/************************************Criando e Configurando Botoes*************************/
@@ -117,12 +118,16 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			panelSaldo.setVisible(true);
 			panelSaldo.setBounds(porWidth(85), porHeight(80), porWidth(10), porHeight(5));
 				
-			
+		
 			
 		}
 		private void criandosPanels(){
-			//contas = new PanelContas(porWidth(30),porHeight(20),);
-			
+			/******************************Configuração do ScrollPane Contas**********************/
+			pContas = new JScrollPane(new PanelContas(porWidth(22),porHeight(15)));
+			add(pContas);
+			pContas.setBounds(porWidth(70), porHeight(55), porWidth(22.2), porHeight(15));
+			//pContas.setBorder(null);
+			pContas.setVisible(true);
 		}
 	
 		

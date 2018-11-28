@@ -8,32 +8,45 @@ public class Movimentacao {
 	private float valor = 0;
 	private String obs = null;
 	private Date data = null;
+	private boolean agendada;
 	private Categoria tipo = null;
 	private Categoria agen = null;
 	
 /***********************************Construtor*******************************************/
-	public Movimentacao(int id, float valor, String obs, Date data, Categoria tipo, Categoria agen) {
+	public Movimentacao(int id, float valor, String obs, Date data, Tipo tipo) {
 		super();
 		this.id = id;
 		this.valor = valor;
 		this.obs = obs;
 		this.data = data;
 		this.tipo = tipo;
-		this.agen = agen;
+		agendada=false;
 	}
-	public Movimentacao(float valor,Date data,Agendadas agen) {
+	public Movimentacao(int id, float valor, String obs, Date data, Agendadas agen) {
 		super();
+		this.id = id;
 		this.valor = valor;
 		this.obs = obs;
 		this.data = data;
 		this.agen = agen;
+		agendada=true;
+	}
+	public Movimentacao(float valor,Date data,Agendadas agen) {
+		super();
+		id=0;
+		this.valor = valor;
+		this.data = data;
+		this.agen = agen;
+		agendada=true;
 	}
 	public Movimentacao(float valor, String obs, Date data, Tipo tipo) {
 		super();
+		id=0;
 		this.valor = valor;
 		this.obs = obs;
 		this.data = data;
 		this.tipo = tipo;
+		agendada=false;
 	}
 	
 /***********************************Metodos Getters e Setters*************************/
@@ -83,5 +96,11 @@ public class Movimentacao {
 	
 	public void setAgen(Categoria agen) {
 		this.agen = agen;
-}	
+}
+	public boolean isAgendada() {
+		return agendada;
+	}
+	public void setAgendada(boolean agendada) {
+		this.agendada = agendada;
+	}	
 }

@@ -15,6 +15,8 @@ import backEnd.Contas.Tipo;
 public class BDD {
 	/***********Atributos****************/
 	private static int totem;
+	private static String nome;
+	
 	private static Connection connection = null;
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String url = "jdbc:mysql://ESN509vmysql:3306/luann_projeto2infab?useSSL=false&useTimezone=true&serverTimezone=UTC";
@@ -54,6 +56,7 @@ public class BDD {
 				
 				while(resultset.next()){
 					totem = resultset.getInt("idlogin");
+					nome = resultset.getString(4);
 					retorno = true;
 				}				
 			}catch(SQLException e){
@@ -200,8 +203,7 @@ public class BDD {
 							resultset.getFloat(4),
 							resultset.getString(6),
 							resultset.getDate(5),
-							categoriaTipo(resultset.getInt(2)), 
-							null);
+							categoriaTipo(resultset.getInt(2)));
 					array.add(movimentacao);
 				}				
 			}catch(SQLException e){
@@ -238,8 +240,7 @@ public class BDD {
 					movimentacao = new Movimentacao(resultset.getInt(1),
 							agen.getValor(),
 							agen.getObs(),
-							resultset.getDate(4),
-							null, 
+							resultset.getDate(4), 
 							agen);
 					array.add(movimentacao);
 				}				
@@ -388,11 +389,11 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("update Contas set login_idlogin =? ,"
-						+ " tipo_Conta_idtipo_Conta= ? ,"
-						+ " saldo=? ,"
-						+ " obs=? , ativa=?"
-						+ " where idcontas=?;");
+				statement = connection.prepareStatement("update Contas set login_idlogin = ? ,"
+						+ " tipo_Conta_idtipo_Conta = ? ,"
+						+ " saldo = ? ,"
+						+ " obs = ? , ativa = ? "
+						+ " where idcontas = ?;");
 				statement.setInt(1, conta.getIdLogin());
 				statement.setInt(2, conta.getIdTipo());
 				statement.setFloat(3, conta.getSaldo());
@@ -445,11 +446,12 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("update ang_exe set contas_idcontas=?,"
-						+ "agendadas_idagendadas=?,"
-						+ "data=?,"
-						+ "valor=?"
-						+ "where idang_execol=?");
+				statement = connection.prepareStatement("update ang_exe set"
+						+ " contas_idcontas = ? ,"
+						+ "agendadas_idagendadas = ? ,"
+						+ "data = ? ,"
+						+ "valor = ? "
+						+ "where idang_execol = ?;");
 				statement.setInt(1, idconta);
 				statement.setInt(2, mov.getAgen().getId());
 				statement.setDate(3, ManipulandoData.convDataBanco(mov.getData()));//Coverter para SQl
@@ -475,7 +477,7 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("insert into ang_exe values (null,?,?,?,?,?);");
+				statement = connection.prepareStatement("insert into ang_exe values (null,?,?,?,?);");
 				statement.setInt(1, idconta);
 				statement.setInt(2, mov.getAgen().getId());
 				statement.setDate(3, ManipulandoData.convDataBanco(mov.getData()));//Coverter para SQl
@@ -500,12 +502,12 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("update entrada_depesas set"
-						+ "tipos_idtipos=?,"
-						+ "contas_idcontas=?,"
-						+ "valor=?,"
-						+ "data=?,"
-						+ "obs=?"
+				statement = connection.prepareStatement("update entrada_depesas set "
+						+ "tipos_idtipos = ? ,"
+						+ "contas_idcontas = ? ,"
+						+ "valor = ? ,"
+						+ "data = ? ,"
+						+ "obs = ? "
 						+ "where identrada_depesas=?;");
 				statement.setInt(1, mov.getTipo().getId());
 				statement.setInt(2, idconta);
@@ -533,7 +535,7 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("insert into ang_exe values (null,?,?,?,?,?);");
+				statement = connection.prepareStatement("insert into entrada_depesas values (null,?,?,?,?,?);");
 				statement.setInt(1, mov.getTipo().getId());
 				statement.setInt(2, idconta);
 				statement.setFloat(3, mov.getValor());
@@ -559,14 +561,14 @@ public class BDD {
 		
 		if(conecta()){
 			try {
-				statement = connection.prepareStatement("update agendadas set"
-						+ "data_criacao=?,"
-						+ "despesa=?,"
-						+ "porcentagem=?,"
-						+ "valor=?,"
-						+ "obs=?,"
-						+ "login_idlogin=?,"
-						+ "ativa=?"
+				statement = connection.prepareStatement("update agendadas set "
+						+ "data_criacao = ?,"
+						+ "despesa = ? ,"
+						+ "porcentagem = ? ,"
+						+ "valor = ? ,"
+						+ "obs = ? ,"
+						+ "login_idlogin = ? ,"
+						+ "ativa = ?  "
 						+ "where idagendadas=?;");
 				statement.setDate(1, ManipulandoData.convDataBanco(age.getDataCriacao()));//Coverter para SQl
 				statement.setBoolean(2, age.isDespesa());
@@ -623,6 +625,10 @@ public class BDD {
 	/***********************Metodos Auxilares************************/
 	public static int getTotem() {
 		return totem;
+	}
+
+	public static String getNome() {
+		return nome;
 	}
 	
 	/***********************************************************************************************/

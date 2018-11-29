@@ -90,8 +90,8 @@ public class Movimentacao {
 		this.tipo = tipo;
 	}
 	
-	public Categoria getAgen() {
-		return agen;
+	public Agendadas getAgen() {
+		return (Agendadas) agen;
 	}
 	
 	public void setAgen(Categoria agen) {

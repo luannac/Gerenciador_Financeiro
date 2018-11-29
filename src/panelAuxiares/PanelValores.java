@@ -16,17 +16,22 @@ public class PanelValores extends JPanel implements JanelaRedimensionada{
 	private JLabel lValor,lLabel;
 	
 /**********************************Construtor***********************************************************/
-	public PanelValores(int x, int y,float valor,String nome) {
+	public PanelValores(int x, int y,float valor,String nome,boolean testa) {
 		setLayout(null);
 		setBackground(FramePrincipal.getAuxBackground());
 		setSize(x,y);
-		setBackground(Color.green);
 		setBorder(javax.swing.BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK)));
 		
 		criandoLabels();
 		lLabel.setText(nome+": ");
 		lValor.setText("R$"+valor);
 		
+		if(testa){
+			if(valor>0)
+				setBackground(Color.green);
+			else
+				setBackground(Color.red);
+		}
 	}
 	
 /*********************************Metodos Auxiliares****************************************************/

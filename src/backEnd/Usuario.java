@@ -94,7 +94,21 @@ public class Usuario {
 			
 			return estado;
 		}
-		
+		public ArrayList<Movimentacao> getMovimentacoes(){
+			ArrayList<Movimentacao> mov = new ArrayList<>();
+			for (Conta conta : contas) {
+				mov.addAll(conta.getEntradasDespesas());
+			}
+			
+			return mov;
+		}
+		public Conta pegarContaMov(Movimentacao mov){
+			for (Conta conta : contas) {
+				if(conta.contaTem(mov))
+					return conta;
+			}
+			return null;
+		}
 	/***********************************Salvar*******************************************/
 		public boolean salvar(){
 			boolean estado=false;

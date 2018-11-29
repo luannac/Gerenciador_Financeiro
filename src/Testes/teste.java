@@ -15,7 +15,7 @@ import frames.FrameLogin;
 public class teste {
 
 	public static void main(String[] args) {
-		//new FrameLogin();
-		new FramePrincipal(1,new Usuario());
+		new FrameLogin();
+		//new FramePrincipal(1,new Usuario());
 	}
 }

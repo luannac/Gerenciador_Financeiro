@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -13,6 +14,7 @@ import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
 import backEnd.Contas.Movimentacao;
 import panelAuxiares.PanelContas;
+import panelAuxiares.PanelMovimentacoes;
 import panelAuxiares.PanelValores;
 
 public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionListener{
@@ -24,9 +26,9 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 	private JScrollPane jsMovimentacoes;
 	private JPanel pSaldo,pReceita,pDespesas;
 
-/******************************Construtor********************************/
+/******************************Construtor***********************************/
 	public PanelBalanco(int x, int y){
-	/****************************Configurações Gerais**************************/
+	/****************************Configurações Gerais***********************/
 		setLayout(null);
 		setBackground(FramePrincipal.getAuxBackground());
 		setSize(x,y);
@@ -112,30 +114,31 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 	}
 	private void criandosPanels(){
 	/******************************Configuração do ScrollPane Contas**************************/
-		jsMovimentacoes = new JScrollPane();
+		jsMovimentacoes = new JScrollPane(new PanelMovimentacoes(porWidth(90), porHeight(65),FramePrincipal.getIdUsuario()));
 		add(jsMovimentacoes);
 		jsMovimentacoes.setBounds(porWidth(5), porHeight(25), porWidth(90), porHeight(65));
 		//pContas.setBorder(null);
 		jsMovimentacoes.setVisible(true);
 		
 	/****************************Configurações Panel Saldo************************************/
-		pSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo");
+		pSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo",true);
 		add(pSaldo);
-		pSaldo.setBounds(porWidth(5), porHeight(19), porHeight(10), porHeight(7));
+		pSaldo.setBounds(porWidth(5), porHeight(19), porWidth(10), porHeight(7));
 		pSaldo.setVisible(true);
 		
 	/****************************Configurações Panel Receita************************************/
-		pReceita = new PanelValores(porWidth(10), porHeight(7), 100, "Receita do Més");
+		pReceita = new PanelValores(porWidth(15), porHeight(7), 100, "Receita do Més",false);
 		add(pReceita);
 		pReceita.setVisible(true);
-		pReceita.setBounds(porWidth(16), porHeight(19), porWidth(10), porHeight(7));
-		pReceita.setVisible(true);
+		pReceita.setBackground(Color.green);
+		pReceita.setBounds(porWidth(15), porHeight(19), porWidth(15), porHeight(7));
 	
 	/****************************Configurações Panel Receita************************************/
-		pDespesas = new PanelValores(porWidth(10), porHeight(7), 100, "Despesas do Més");
+		pDespesas = new PanelValores(porWidth(15), porHeight(7), 100, "Despesas do Més",false);
 		add(pDespesas);
 		pDespesas.setVisible(true);
-		pDespesas.setBounds(porWidth(24), porHeight(19), porWidth(10), porHeight(7));
+		pDespesas.setBounds(porWidth(30), porHeight(19), porWidth(15), porHeight(7));
+		pDespesas.setBackground(Color.red);
 		
 	}
 

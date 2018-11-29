@@ -123,7 +123,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			labelMes.setBounds(porWidth(45), porHeight(94), porWidth(15), porHeight(5));
 			
 		/********************************Panel Saldo*********************************************/
-			panelSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo");
+			panelSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo",true);
 			add(panelSaldo);
 			panelSaldo.setVisible(true);
 			panelSaldo.setBounds(porWidth(85), porHeight(78), porWidth(10), porHeight(7));

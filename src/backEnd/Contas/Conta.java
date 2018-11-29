@@ -101,6 +101,13 @@ public class Conta {
 
 		return estado;
 	}
+	public boolean contaTem(Movimentacao mov){
+		for (Movimentacao movimentacao : entradasDespesas) {
+			if(mov==mov)
+				return true;
+		}
+		return false;
+	}
 	
 /***********************************Metodos Getters e Setters*************************/
 	public int getId() {

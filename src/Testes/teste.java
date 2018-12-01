@@ -11,11 +11,13 @@ import backEnd.BDD;
 import backEnd.Usuario;
 import frame_Principal.FramePrincipal;
 import frames.FrameLogin;
+import frames.FrameMovimentacao;
 
 public class teste {
 
 	public static void main(String[] args) {
-		new FrameLogin();
+		//new FrameLogin();
 		//new FramePrincipal(1,new Usuario());
+		new FrameMovimentacao();
 	}
 }

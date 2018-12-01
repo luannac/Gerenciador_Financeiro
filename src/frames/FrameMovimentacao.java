@@ -17,17 +17,20 @@ import panelAuxiares.PanelEditMovimentacao;
 
 public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 /**********************************Atributos************************************************************/
+	//Menu
 	private JLabel lRefenceRB;
 	private ButtonGroup radioGroup;
 	private JRadioButton rbReceita,rbDespesa,rbTransferencia;
 	
+	//conteudo
 	private JPanel panel;
 	
+	//Inferior
 	private JButton bSalvar,bCancelar;
 	
 /**********************************Construtores*********************************************************/
 	public FrameMovimentacao() {
-		super("Movimentação");
+		super("MovimentaÃ§Ã£o");
 		setSize((pegarResolucao().width -700), (pegarResolucao().height - 300));
 		setVisible(true);
 		setResizable(false);
@@ -41,10 +44,10 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 		
 	}
 	
-/**********************************Metodos de Criação***************************************************/
+/**********************************Metodos de CriaÃ§Ã£o***************************************************/
 	private void criandoRadioMenu(){
 		//Label Informativo*****************************************************************************/
-			lRefenceRB = new JLabel("Você está Cadastrando uma nova:");
+			lRefenceRB = new JLabel("VocÃª estÃ¡ Cadastrando uma nova:");
 			getContentPane().add(lRefenceRB);
 			lRefenceRB.setVisible(true);
 			lRefenceRB.setBounds(porWidth(3), porHeight(5), porWidth(33), porHeight(4));
@@ -87,13 +90,13 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 		bSalvar = new JButton("Salvar");
 		getContentPane().add(bSalvar);
 		bSalvar.setVisible(true);
-		bSalvar.setBounds(porWidth(30), porHeight(88), porWidth(10), porHeight(5));
+		bSalvar.setBounds(porWidth(25), porHeight(88), porWidth(15), porHeight(5));
 		
 		//Criando Botao Cancelar
 		bCancelar = new JButton("Cancelar");
 		getContentPane().add(bCancelar);
 		bCancelar.setVisible(true);
-		bCancelar.setBounds(porWidth(45), porHeight(88), porWidth(10), porHeight(5));
+		bCancelar.setBounds(porWidth(45), porHeight(88), porWidth(15), porHeight(5));
 	}
 	
 /**********************************Metodos da JanelaRedimencionada**************************************/

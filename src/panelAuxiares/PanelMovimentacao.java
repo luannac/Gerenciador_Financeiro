@@ -2,10 +2,12 @@ package panelAuxiares;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -18,7 +20,8 @@ import frame_Principal.FramePrincipal;
 
 public class PanelMovimentacao extends JPanel implements JanelaRedimensionada {
 /************************************Atributo*********************************************/
-	private JTextArea lValor,lConta,lObs,lData,lTipo;
+	private JLabel lValor,lConta,lObs,lData,lTipo;
+	private JButton bEditar;
 	private Movimentacao mov;
 	private Conta conta;
 	
@@ -33,60 +36,87 @@ public class PanelMovimentacao extends JPanel implements JanelaRedimensionada {
 			
 			criandoLabels();
 			definindoLabels();
+			criandoButtons();
+			
+			if(mov.isAgendada()){
+				if(mov.getAgen().isDespesa())
+					setBackground(new Color(255, 90, 71));
+				else
+					setBackground(new Color(152, 251, 152));
+			}else{
+				if(mov.getTipo().isDespesa())
+					setBackground(new Color(255, 90, 71));
+				else
+					setBackground(new Color(152, 251, 152));
+			}
 		}
 
 /************************************Criando Labels****************************************/
 		private void criandoLabels(){
 			//Tipo
-				lTipo = new JTextArea();
+				lTipo = new JLabel();
 				lTipo.setVisible(true);
 				lTipo.setBounds(porWidth(2), porHeight(30), porWidth(20), porHeight(80));
 				add(lTipo);
 				
 			//OBS
-				lObs = new JTextArea();
+				lObs = new JLabel();
 				lObs.setVisible(true);
 				lObs.setBounds(porWidth(22), porHeight(30), porWidth(20), porHeight(80));
 				add(lObs);
 				
 			//Conta
-				lConta = new JTextArea();
+				lConta = new JLabel();
 				lConta.setVisible(true);
 				lConta.setBounds(porWidth(42), porHeight(30), porWidth(20), porHeight(80));
 				add(lConta);
 				
 			//lValor
-				lValor = new JTextArea();
+				lValor = new JLabel();
 				lValor.setVisible(true);
 				lValor.setBounds(porWidth(62), porHeight(30), porWidth(10), porHeight(80));
 				add(lValor);
 				
 			//Data
-				lData = new JTextArea();
+				lData = new JLabel();
 				lData.setVisible(true);
 				lData.setBounds(porWidth(72), porHeight(30), porWidth(10), porHeight(80));
 				add(lData);
 		}
+		private void criandoButtons(){
+			bEditar = new JButton("Editar");
+			add(bEditar);
+			bEditar.setVisible(true);
+			bEditar.setBounds(porWidth(83), porHeight(10), porWidth(13), porHeight(80));
+			
+			bEditar.setForeground(Color.white);
+			bEditar.setBackground(Color.gray);
+			bEditar.setBorder(null);
+			
+		}
 		private void definindoLabels(){
 			//Tipo
 				if(mov.isAgendada()){
-					lTipo.setText(mov.getAgen().getObs());
+					lTipo.setText("Agendada");
 				}else{
-					lTipo.setText(BDD.categoriaTipo(mov.getTipo().getId()).getNome());
+					lTipo.setText("Tipo: "+BDD.categoriaTipo(mov.getTipo().getId()).getNome());
 				}
 				
 			//OBS
 				if(mov.isAgendada()){
-					lObs.setText(mov.getAgen().getObs());
+					lObs.setText("identificação : "+mov.getAgen().getObs());
 				}else{
-					lObs.setText(mov.getObs());
+					lObs.setText("identificação: "+mov.getObs());
 				}
 				
 			//Conta
 				lConta.setText(BDD.tipoConta(conta.getIdTipo())+"\\"+conta.getObs());
 				
 			//Valor
-				lValor.setText(String.valueOf(mov.getValor()));
+				lValor.setText(String.valueOf("Valor: "+mov.getValor()));
+				
+			//Data 
+				lData.setText(String.valueOf(mov.getData()));
 		}
 /************************************Metodos da Interface JanelaRedimensionada************/
 	@Override

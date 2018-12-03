@@ -67,8 +67,7 @@ public class FrameLogin extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					if(BDD.login(field.getText(), password.getText())){
-						Usuario usu =new Usuario();
-						new FramePrincipal(BDD.getTotem(),usu);
+						new FramePrincipal(BDD.getTotem());
 						setVisible(false);
 					}else{
 						label[2].setVisible(true);

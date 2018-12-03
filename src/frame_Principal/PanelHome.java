@@ -55,7 +55,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new FrameMovimentacao();
+					new FrameMovimentacao(1);
 					
 				}
 			});
@@ -68,6 +68,14 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			botaoDespesa.setBounds(porWidth(32), porHeight(5), porWidth(10), porHeight(5));
 			botaoDespesa.setBorder(new LineBorder(null,0,true));
 			
+			botaoDespesa.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					new FrameMovimentacao(2);
+				}
+			});
+			
 		/****************************Configurações Botao Transferencia***************************/
 			botaoTransferencia = new JButton("Tranferencia");
 			add(botaoTransferencia);
@@ -75,6 +83,14 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			botaoTransferencia.setBackground(Color.ORANGE);
 			botaoTransferencia.setBounds(porWidth(44), porHeight(5), porWidth(10), porHeight(5));
 			botaoTransferencia.setBorder(new LineBorder(null,0,true));
+			
+			botaoTransferencia.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					new FrameMovimentacao(3);
+				}
+			});
 			
 		/****************************Configurações Botao Nova Conta***************************/
 			botaoNewConta = new JButton("Nova Conta");

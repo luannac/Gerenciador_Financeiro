@@ -37,7 +37,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		private JLabel rodapeLabel;
 	
 	/*********************Configurações Gerais************************/
-	public FramePrincipal(int tot,Usuario idUsuario){
+	public FramePrincipal(int tot){
 		super("Gerenciador Financeiro");
 		getContentPane().setBackground(FramePrincipal.colorbackground);
 		setLayout(null);
@@ -54,7 +54,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		
 		//Atribuindo atributos
 		idFrame= this;
-		this.idUsuario=idUsuario;
+		this.idUsuario=new Usuario();
 		
 		//Criando Componentes
 		criandoBotoes();

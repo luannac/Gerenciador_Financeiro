@@ -34,6 +34,7 @@ public class Usuario {
 				tipos = BDD.carregandoTipos();				
 			}catch(Exception e){
 				tipos = new ArrayList<>();
+				e.printStackTrace();
 			}
 		}
 		

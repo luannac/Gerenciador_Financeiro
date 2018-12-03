@@ -23,7 +23,7 @@ public class PanelMovimentacoes extends JPanel implements JanelaRedimensionada {
 		setLayout(null);
 		setBackground(FramePrincipal.getAuxBackground());
 		setSize(x,y);
-		setPreferredSize(new Dimension(x-porWidth(12.), usu.getMovimentacoes().size()*porHeight(10.7)));
+		setPreferredSize(new Dimension(x-porWidth(12.), usu.getMovimentacoes().size()*porHeight(8.7)));
 		
 		this.usu=usu;
 		
@@ -36,8 +36,8 @@ public class PanelMovimentacoes extends JPanel implements JanelaRedimensionada {
 		int i=0;
 		if(!usu.getMovimentacoes().isEmpty()){
 			for (Movimentacao movimentacao : usu.getMovimentacoes()) {
-				pMovimentacao = new PanelMovimentacao(porWidth(98), porHeight(10), movimentacao,usu.pegarContaMov(movimentacao));
-				pMovimentacao.setBounds(porWidth(0), i*porHeight(10.7), porWidth(99), porHeight(10));
+				pMovimentacao = new PanelMovimentacao(porWidth(98), porHeight(8), movimentacao,usu.pegarContaMov(movimentacao));
+				pMovimentacao.setBounds(porWidth(0), i*porHeight(8.7), porWidth(99), porHeight(8));
 				add(pMovimentacao);
 				i++;
 			}

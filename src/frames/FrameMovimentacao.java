@@ -24,19 +24,22 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 	
 	//conteudo
 	private JPanel panel;
+	private int tipo;
 	
 	//Inferior
 	private JButton bSalvar,bCancelar;
 	
 /**********************************Construtores*********************************************************/
-	public FrameMovimentacao() {
-		super("MovimentaÃ§Ã£o");
+	public FrameMovimentacao(int tipo) {
+		super("Movimentação");
 		setSize((pegarResolucao().width -700), (pegarResolucao().height - 300));
 		setVisible(true);
 		setResizable(false);
 		setLayout(null);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		
+		this.tipo = tipo;
 		
 		criandoRadioMenu();
 		configurandoPanel();
@@ -47,7 +50,7 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 /**********************************Metodos de CriaÃ§Ã£o***************************************************/
 	private void criandoRadioMenu(){
 		//Label Informativo*****************************************************************************/
-			lRefenceRB = new JLabel("VocÃª estÃ¡ Cadastrando uma nova:");
+			lRefenceRB = new JLabel("Você está Cadastrando uma nova:");
 			getContentPane().add(lRefenceRB);
 			lRefenceRB.setVisible(true);
 			lRefenceRB.setBounds(porWidth(3), porHeight(5), porWidth(33), porHeight(4));
@@ -75,10 +78,17 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 			radioGroup.add(rbReceita);
 			radioGroup.add(rbDespesa);
 			radioGroup.add(rbTransferencia);
+			
+		if(tipo==1)
+			rbReceita.setSelected(true);
+		if(tipo==2)
+			rbDespesa.setSelected(true);
+		if(tipo==3)
+			rbTransferencia.setSelected(true);
 
 	}
 	private void configurandoPanel(){/******************************************************************/
-		panel = new PanelEditMovimentacao(porWidth(95), porHeight(75));
+		panel = new PanelEditMovimentacao(porWidth(95), porHeight(75),tipo);
 		getContentPane().add(panel);
 		
 		panel.setBounds(porWidth(3), porHeight(10), porWidth(95), porHeight(75));

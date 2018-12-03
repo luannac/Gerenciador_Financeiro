@@ -16,8 +16,8 @@ import frames.FrameMovimentacao;
 public class teste {
 
 	public static void main(String[] args) {
-		//new FrameLogin();
+		new FrameLogin();
 		//new FramePrincipal(1,new Usuario());
-		new FrameMovimentacao();
+		//new FrameMovimentacao();
 	}
 }

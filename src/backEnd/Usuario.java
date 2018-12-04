@@ -174,6 +174,47 @@ public class Usuario {
 		}
 		
 	/***********************************Getters e Setters*******************************************/
+		public float getSaldo(){
+			float valor=0;
+			for (Conta conta : contas) {
+				valor+=conta.getSaldo();
+			}
+			return valor;
+		}
+		public float getSaldoPositivoMes(byte mes,int ano){
+			float valor=0;
+			for (Conta conta : contas) {
+				for (Movimentacao mov : conta.getEntradasDespesas()) {
+					if(mov.getData().getMonth()==mes && mov.getData().getYear() == ano){
+						if(mov.isAgendada()){
+							if(!mov.getAgen().isDespesa());
+								valor+=mov.getValor();
+						}else{
+							if(!mov.getTipo().isDespesa())
+								valor+=mov.getValor();
+						}
+					}
+				}
+			}
+			return valor;
+		}
+		public float getSaldoNegativoMes(byte mes,int ano){
+			float valor=0;
+			for (Conta conta : contas) {
+				for (Movimentacao mov : conta.getEntradasDespesas()) {
+					if(mov.getData().getMonth()==mes && mov.getData().getYear()==ano){
+						if(mov.isAgendada()){
+							if(mov.getAgen().isDespesa());
+								valor+=mov.getValor();
+						}else{
+							if(mov.getTipo().isDespesa())
+								valor+=mov.getValor();
+						}
+					}
+				}
+			}
+			return valor;
+		}
 		public List<Conta> getContas() {
 			return contas;
 		}

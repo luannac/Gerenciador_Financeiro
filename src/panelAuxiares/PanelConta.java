@@ -48,15 +48,15 @@ public class PanelConta extends JPanel implements JanelaRedimensionada {
 		/********************************Label de Saldo**************************************/
 			lSaldo = new JLabel("Saldo: "+conta.getSaldo());
 			lSaldo.setVisible(true);
-			lSaldo.setBounds(porWidth(50), porHeight(30), porWidth(30), porHeight(30));
+			lSaldo.setBounds(porWidth(45), porHeight(30), porWidth(30), porHeight(30));
 			add(lSaldo);
 			
 		}
 		private void criandoButton(){
 			
-			bEdit = new JButton();
+			bEdit = new JButton("Editar");
 			add(bEdit);
-			bEdit.setBounds(porWidth(85), porHeight(10), porWidth(13), porHeight(70));
+			bEdit.setBounds(porWidth(77), porHeight(10), porWidth(15), porHeight(70));
 			bEdit.setVisible(true);
 		}
 		

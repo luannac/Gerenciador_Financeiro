@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 
 import ClassesAuxiliares.JanelaRedimensionada;
 import panelAuxiares.PanelEditMovimentacao;
+import panelAuxiares.PanelEditTransferencia;
 
 public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 /**********************************Atributos************************************************************/
@@ -88,13 +89,18 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 
 	}
 	private void configurandoPanel(){/******************************************************************/
-		panel = new PanelEditMovimentacao(porWidth(95), porHeight(75),tipo);
+		if(rbReceita.isSelected())
+			panel = new PanelEditMovimentacao(porWidth(95), porHeight(75),tipo);
+		if(rbDespesa.isSelected())
+			panel = new PanelEditMovimentacao(porWidth(95), porHeight(75),tipo);
+		if(rbTransferencia.isSelected())
+			panel = new PanelEditTransferencia(porWidth(95), porHeight(75));
+		
 		getContentPane().add(panel);
-		
 		panel.setBounds(porWidth(3), porHeight(10), porWidth(95), porHeight(75));
-		
 		panel.setBorder(BorderFactory.createLineBorder(Color.black));
-	}
+		}
+
 	private void criandoBotoes(){/**********************************************************************/
 		//Criando Botao Salvar
 		bSalvar = new JButton("Salvar");

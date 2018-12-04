@@ -27,6 +27,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 		private JLabel labelMes;
 		private JPanel panelSaldo;
 		private JScrollPane pContas;
+		private Thread newFrame;
 	
 	/******************************Construtor********************************/
 		public PanelHome(int x, int y){
@@ -139,7 +140,7 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			labelMes.setBounds(porWidth(45), porHeight(94), porWidth(15), porHeight(5));
 			
 		/********************************Panel Saldo*********************************************/
-			panelSaldo = new PanelValores(porWidth(10), porHeight(7), 100,"Saldo",true);
+			panelSaldo = new PanelValores(porWidth(10), porHeight(7), FramePrincipal.getIdUsuario().getSaldo(),"Saldo",true);
 			add(panelSaldo);
 			panelSaldo.setVisible(true);
 			panelSaldo.setBounds(porWidth(85), porHeight(78), porWidth(10), porHeight(7));
@@ -149,9 +150,9 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 		}
 		private void criandosPanels(){
 			/******************************Configuração do ScrollPane Contas**********************/
-			pContas = new JScrollPane(new PanelContas(porWidth(22),porHeight(15)));
+			pContas = new JScrollPane(new PanelContas(porWidth(30),porHeight(15)));
 			add(pContas);
-			pContas.setBounds(porWidth(70), porHeight(55), porWidth(22.2), porHeight(15));
+			pContas.setBounds(porWidth(65), porHeight(30), porWidth(30.2), porHeight(40));
 			//pContas.setBorder(null);
 			pContas.setVisible(true);
 		}
@@ -165,24 +166,24 @@ public class PanelHome extends JPanel implements JanelaRedimensionada,ActionList
 			}
 			if(e.getSource()== botaoSetaEsq){
 				if(FramePrincipal.getMes()==1){
-					FramePrincipal.setMes(12);
+					FramePrincipal.setMes((byte) 12);
 					FramePrincipal.setAno(FramePrincipal.getAno()-1);
 				}else{
-					FramePrincipal.setMes(FramePrincipal.getMes()-1);
+					FramePrincipal.setMes((byte) (FramePrincipal.getMes()-1));
 				}
 				labelMes.setText(ManipulandoData.retornaMes(FramePrincipal.getMes())+" "+FramePrincipal.getAno());
 			}
 			if(e.getSource()== botaoSetaDir){
 				if(FramePrincipal.getMes()==12){
-					FramePrincipal.setMes(1);
+					FramePrincipal.setMes((byte) 1);
 					FramePrincipal.setAno(FramePrincipal.getAno()+1);
 				}else{
-					FramePrincipal.setMes(FramePrincipal.getMes()+1);
+					FramePrincipal.setMes((byte) (FramePrincipal.getMes()+1));
 				}
 				labelMes.setText(ManipulandoData.retornaMes(FramePrincipal.getMes())+" "+FramePrincipal.getAno());
 			}
 		}
-	
+		
 	/**********************************Metodos da JanelaRedimencionada**************************************/
 		@Override
 		public int porWidth(double d){

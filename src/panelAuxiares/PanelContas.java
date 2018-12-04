@@ -14,18 +14,15 @@ import frame_Principal.FramePrincipal;
 
 public class PanelContas extends JPanel implements JanelaRedimensionada{
 	/************************************Atributos*******************************************/
-		private List<Conta> contas;
 	
 	/************************************Construtor*******************************************/
 		public PanelContas(int x, int y){
-			contas= new ArrayList<>();
-			if(!FramePrincipal.getIdUsuario().getContas().isEmpty())
-				contas.addAll(FramePrincipal.getIdUsuario().getContas());
+			
 			
 			setLayout(null);
 			setBackground(FramePrincipal.getAuxBackground());
 			setSize(x,y);
-			setPreferredSize(new Dimension(x, contas.size()*porHeight(30)));
+			setPreferredSize(new Dimension(x, FramePrincipal.getIdUsuario().getContas().size()*porHeight(61)));
 			
 			criandoPanelContas();
 		}
@@ -35,11 +32,12 @@ public class PanelContas extends JPanel implements JanelaRedimensionada{
 		private void criandoPanelContas() {
 			PanelConta pConta;
 			int i=0;
-			for (Conta conta : contas) {
+			for (Conta conta : FramePrincipal.getIdUsuario().getContas()) {
 				pConta = new PanelConta(porWidth(100), porHeight(60), conta);
-				pConta.setBounds(porWidth(0),i*(porHeight(30)),porWidth(100),porHeight(60));
+				pConta.setBounds(porWidth(0),i*(porHeight(61)),porWidth(100),porHeight(60));
 				pConta.setVisible(true);
 				add(pConta);
+				i++;
 			}
 			
 		}

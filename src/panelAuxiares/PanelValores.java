@@ -28,7 +28,7 @@ public class PanelValores extends JPanel implements JanelaRedimensionada{
 		
 		if(testa){
 			if(valor>0)
-				setBackground(Color.green);
+				setBackground(new Color(152, 251, 152));
 			else
 				setBackground(Color.red);
 		}

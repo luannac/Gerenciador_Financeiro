@@ -383,7 +383,7 @@ public class BDD {
 		return agendada;
 	}
 	
-	/****************************Metodos Update e Insert********************************************///==Sem testar
+	/****************************Metodos Update e Insert********************************************/
 	public static void updateConta(Conta conta){/***************************************************/
 		PreparedStatement statement = null;
 		
@@ -621,7 +621,6 @@ public class BDD {
 		}
 	}
 	
-	
 	/***********************Metodos Auxilares************************/
 	public static int getTotem() {
 		return totem;
@@ -630,7 +629,4 @@ public class BDD {
 	public static String getNome() {
 		return nome;
 	}
-	
-	/***********************************************************************************************/
-	
 }

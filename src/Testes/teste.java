@@ -17,6 +17,8 @@ public class teste {
 
 	public static void main(String[] args) {
 		new FrameLogin();
+		System.out.println(FramePrincipal.getAno());
+		System.out.println(FramePrincipal.getMes());
 		//new FramePrincipal(1,new Usuario());
 		//new FrameMovimentacao();
 	}

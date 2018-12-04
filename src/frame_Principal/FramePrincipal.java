@@ -22,18 +22,18 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 		private static Color auxBackground = new Color(245, 245, 245);
 		private static boolean alterar  = true;
 		private static Dimension dimensao; 
-		private static int mes= ManipulandoData.pegaMes(),ano=ManipulandoData.pegaAno();
+		private static byte mes= (byte) ManipulandoData.pegaMes();
+		private static int ano=ManipulandoData.pegaAno();
 		private static FramePrincipal idFrame;
 		private static Usuario idUsuario;
 	
 	/*********************Atributos************************/
 		private JButton botaoHome;
 		private JButton botaoBalanco;
-		private JButton botaoSimulacao;
 		private JButton botaoLogout;
 		private JLabel statusNome,statusTime;
 		
-		private JPanel rodape,panel;
+		private JPanel rodape;
 		private JLabel rodapeLabel;
 	
 	/*********************Configurações Gerais************************/
@@ -82,7 +82,6 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 						trocaPanel(new PanelHome(porWidth(93.5), porHeight(84)));
 						botaoHome.setBackground(Color.yellow);
 						botaoBalanco.setBackground(Color.white);
-						botaoSimulacao.setBackground(Color.white);
 					}
 				});
 			
@@ -100,25 +99,6 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 						trocaPanel(new PanelBalanco(porWidth(93.5), porHeight(84)));
 						botaoHome.setBackground(Color.white);
 						botaoBalanco.setBackground(Color.orange);
-						botaoSimulacao.setBackground(Color.white);
-					}
-				});
-				
-			//Botao Simulação
-				botaoSimulacao = new JButton("SIMULAÇÂO");
-				getContentPane().add(botaoSimulacao);
-				botaoSimulacao.setVisible(true);
-				botaoSimulacao.setBounds(porWidth(23), porHeight(2.5), porWidth(10), porHeight(5.5));
-				
-				botaoSimulacao.setBackground(Color.white);
-				
-				botaoSimulacao.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						trocaPanel(new PanelSimulador());
-						botaoHome.setBackground(Color.white);
-						botaoBalanco.setBackground(Color.white);
-						botaoSimulacao.setBackground(Color.BLUE);
 					}
 				});
 				
@@ -273,10 +253,10 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 	public static void setDimensao(Dimension dimensao) {
 		FramePrincipal.dimensao = dimensao;
 	}
-	public static int getMes() {
+	public static byte getMes() {
 		return mes;
 	}
-	public static void setMes(int mes) {
+	public static void setMes(byte mes) {
 		FramePrincipal.mes = mes;
 	}
 	public static int getAno() {

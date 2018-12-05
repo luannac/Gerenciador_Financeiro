@@ -32,7 +32,7 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 	
 /**********************************Construtores*********************************************************/
 	public FrameMovimentacao(int tipo) {
-		super("Movimentação");
+		super("Movimentaï¿½ï¿½o");
 		setSize((pegarResolucao().width -700), (pegarResolucao().height - 300));
 		setVisible(true);
 		setResizable(false);
@@ -51,7 +51,7 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 /**********************************Metodos de CriaÃ§Ã£o***************************************************/
 	private void criandoRadioMenu(){
 		//Label Informativo*****************************************************************************/
-			lRefenceRB = new JLabel("Você está Cadastrando uma nova:");
+			lRefenceRB = new JLabel("Vocï¿½ estï¿½ Cadastrando uma nova:");
 			getContentPane().add(lRefenceRB);
 			lRefenceRB.setVisible(true);
 			lRefenceRB.setBounds(porWidth(3), porHeight(5), porWidth(33), porHeight(4));

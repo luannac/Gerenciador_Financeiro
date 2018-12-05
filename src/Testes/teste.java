@@ -12,14 +12,16 @@ import backEnd.Usuario;
 import frame_Principal.FramePrincipal;
 import frames.FrameLogin;
 import frames.FrameMovimentacao;
+import frames.FrameNewUsuario;
 
 public class teste {
 
 	public static void main(String[] args) {
-		new FrameLogin();
+		//new FrameLogin();
 		System.out.println(FramePrincipal.getAno());
 		System.out.println(FramePrincipal.getMes());
-		//new FramePrincipal(1,new Usuario());
+		//new FramePrincipal(1);
+		new FrameNewUsuario();
 		//new FrameMovimentacao();
 	}
 }

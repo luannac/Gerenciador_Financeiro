@@ -66,6 +66,35 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
 	/*****************************Configuração do Panel**********************************/
 		trocaPanel(new PanelHome(porWidth(93.5), porHeight(84)));
 	}
+	public FramePrincipal(int tot,Usuario usu){
+		super("Gerenciador Financeiro");
+		getContentPane().setBackground(FramePrincipal.colorbackground);
+		setLayout(null);
+		setResizable(false);
+		setVisible(true);
+		
+		//Ação ao clicar em desligar
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		
+		
+		//Dimensao
+		setDimensao(pegarResolucao());
+		setSize((dimensao.width -230), (dimensao.height - 60));
+		
+		//Atribuindo atributos
+		idFrame= this;
+		this.idUsuario=usu;
+		
+		//Criando Componentes
+		criandoBotoes();
+		criandoPartesVisuais();
+		criandoRodape();
+		
+		tempoLogado();
+		
+	/*****************************Configuração do Panel**********************************/
+		trocaPanel(new PanelHome(porWidth(93.5), porHeight(84)));
+	}
 	/*****************************Configuração dos Botoes************************/
 	private void criandoBotoes(){
 		//Botao Home
@@ -156,6 +185,7 @@ public class FramePrincipal extends JFrame implements JanelaRedimensionada{
             public void windowClosing(){
                 int i=JOptionPane.showConfirmDialog(null, "Deseja Deslogar?");
                 if(i==0){
+                	FramePrincipal.getIdUsuario().salvar();
                     setVisible(false);
                     new FrameLogin();
                 }

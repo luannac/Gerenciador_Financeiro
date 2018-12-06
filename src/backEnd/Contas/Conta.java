@@ -38,6 +38,7 @@ public class Conta {
 		tipoConta = BDD.tipoConta(idTipo);
 		obs = modObs;
 		this.ativa=ativa;
+		entradasDespesas = new ArrayList<>();
 	}
 	
 /***********************************Metodos*******************************************/

@@ -36,12 +36,12 @@ public class PanelMovimentacoes extends JPanel implements JanelaRedimensionada {
 		int i=0;
 		if(!usu.getMovimentacoes().isEmpty()){
 			for (Movimentacao movimentacao : usu.getMovimentacoes()) {
-				if(movimentacao.getData().getMonth()==FramePrincipal.getMes() && movimentacao.getData().getYear()==FramePrincipal.getAno()){
+				//if(movimentacao.getData().getMonth()==FramePrincipal.getMes() && movimentacao.getData().getYear()==FramePrincipal.getAno()){
 					pMovimentacao = new PanelMovimentacao(porWidth(98), porHeight(8), movimentacao,usu.pegarContaMov(movimentacao));
 					pMovimentacao.setBounds(porWidth(0), i*porHeight(8.7), porWidth(99), porHeight(8));
 					add(pMovimentacao);
 					i++;
-				}
+				//}
 			}
 		}else{
 			JLabel label = new JLabel("Sem Movimentações este Més");

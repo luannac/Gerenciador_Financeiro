@@ -3,6 +3,8 @@ package frames;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import ClassesAuxiliares.JanelaRedimensionada;
+import frame_Principal.FramePrincipal;
 import panelAuxiares.PanelEditMovimentacao;
 import panelAuxiares.PanelEditTransferencia;
 
@@ -108,11 +111,28 @@ public class FrameMovimentacao extends JFrame implements JanelaRedimensionada {
 		bSalvar.setVisible(true);
 		bSalvar.setBounds(porWidth(25), porHeight(88), porWidth(15), porHeight(5));
 		
+		bSalvar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				setVisible(false);
+			}
+		});
+		
 		//Criando Botao Cancelar
 		bCancelar = new JButton("Cancelar");
 		getContentPane().add(bCancelar);
 		bCancelar.setVisible(true);
 		bCancelar.setBounds(porWidth(45), porHeight(88), porWidth(15), porHeight(5));
+		
+		bCancelar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 	}
 	
 /**********************************Metodos da JanelaRedimencionada**************************************/

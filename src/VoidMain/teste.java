@@ -1,4 +1,4 @@
-package Testes;
+package VoidMain;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -17,11 +17,11 @@ import frames.FrameNewUsuario;
 public class teste {
 
 	public static void main(String[] args) {
-		//new FrameLogin();
+		new FrameLogin();
 		System.out.println(FramePrincipal.getAno());
 		System.out.println(FramePrincipal.getMes());
 		//new FramePrincipal(1);
-		new FrameNewUsuario();
+		//new FrameNewUsuario();
 		//new FrameMovimentacao();
 	}
 }

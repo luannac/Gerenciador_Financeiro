@@ -90,11 +90,12 @@ public class FrameLogin extends JFrame {
 			botao[1].setBounds(0, 241, 300, 30);
 			botao[1].setVisible(true);
 			
+			botao[1].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					new FrameNewUsuario();
+				}
+			});
 	}
-	//
-		private Dimension pegarResolucao() {
-			Toolkit t = Toolkit.getDefaultToolkit();
-			Dimension dimensao = t.getScreenSize();
-			return dimensao;
-		}
 }

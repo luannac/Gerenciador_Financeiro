@@ -95,12 +95,25 @@ public class Usuario {
 			
 			return estado;
 		}
+		public boolean criarConta(int tipo,float saldo,String obs){
+			boolean estado=false;
+			
+			Conta conta = new Conta(BDD.getTotem(), tipo, saldo, obs, true);
+			
+			contas.add(conta);
+			
+			return estado;
+		}
 		public ArrayList<Movimentacao> getMovimentacoes(){
 			ArrayList<Movimentacao> mov = new ArrayList<>();
-			for (Conta conta : contas) {
-				mov.addAll(conta.getEntradasDespesas());
+			try{
+				for (Conta conta : contas) {
+					mov.addAll(conta.getEntradasDespesas());
+				}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
-			
+				
 			return mov;
 		}
 		public Conta pegarContaMov(Movimentacao mov){

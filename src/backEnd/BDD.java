@@ -73,6 +73,45 @@ public class BDD {
 		}
 		return retorno;
 	}
+	public static boolean novoUsuario(String usuario,String senha,String name){
+		boolean retorno = false;
+		PreparedStatement statement = null;
+		ResultSet resultset = null;
+		
+		if(conecta()){
+			try{
+				statement = connection.prepareStatement("insert into login values(null,?,?,?);");
+				statement.setString(1, usuario);
+				statement.setString(2, senha);
+				statement.setString(3, name);
+				
+				statement.executeUpdate();
+				
+				statement = connection.prepareStatement("select * from login where login = ? and senha = ?;");
+				statement.setString(1, usuario);
+				statement.setString(2, senha);
+				
+				resultset = statement.executeQuery();
+				
+				while(resultset.next()){
+					totem = resultset.getInt("idlogin");
+					nome = resultset.getString(4);
+					retorno = true;
+				}				
+			}catch(SQLException e){
+				retorno =false;
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return retorno;
+	}
 	
 	/*****************************Metodos de Iniciação**********************************************/
 	public static ArrayList<Conta> carregaContas(){/************************************************/

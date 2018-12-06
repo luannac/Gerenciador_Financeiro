@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 import ClassesAuxiliares.JanelaRedimensionada;
 import ClassesAuxiliares.ManipulandoData;
 import backEnd.Contas.Movimentacao;
+import frames.FrameMovimentacao;
 import panelAuxiares.PanelContas;
 import panelAuxiares.PanelMovimentacoes;
 import panelAuxiares.PanelValores;
@@ -39,7 +40,7 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		criandosPanels();
 	}
 
-/************************************Criando e Configurando Botoes*************************/
+	/************************************Criando e Configurando Botoes*************************/
 	private void criandoBotoes(){
 	/****************************Configurações Botao Receita***************************/
 		botaoReceita = new JButton("Receita");
@@ -48,6 +49,15 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		botaoReceita.setBackground(Color.GREEN);
 		botaoReceita.setBounds(porWidth(20), porHeight(5), porWidth(10), porHeight(5));
 		botaoReceita.setBorder(new LineBorder(null,0,true));
+		
+		botaoReceita.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FrameMovimentacao(1);
+				
+			}
+		});
 
 	/****************************Configurações Botao Receita***************************/
 		botaoDespesa = new JButton("Despesa");
@@ -57,6 +67,14 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		botaoDespesa.setBounds(porWidth(32), porHeight(5), porWidth(10), porHeight(5));
 		botaoDespesa.setBorder(new LineBorder(null,0,true));
 		
+		botaoDespesa.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new FrameMovimentacao(2);
+			}
+		});
+		
 	/****************************Configurações Botao Transferencia***************************/
 		botaoTransferencia = new JButton("Tranferencia");
 		add(botaoTransferencia);
@@ -64,6 +82,14 @@ public class PanelBalanco extends JPanel implements JanelaRedimensionada,ActionL
 		botaoTransferencia.setBackground(Color.ORANGE);
 		botaoTransferencia.setBounds(porWidth(44), porHeight(5), porWidth(10), porHeight(5));
 		botaoTransferencia.setBorder(new LineBorder(null,0,true));
+		
+		botaoTransferencia.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new FrameMovimentacao(3);
+			}
+		});
 		
 	/****************************Configurações Botao Nova Conta***************************/
 		botaoNewConta = new JButton("Nova Conta");
